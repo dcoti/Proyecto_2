@@ -222,3 +222,4 @@ def CrearReceta():
     url_for('static', filename='w3-theme-black.css')
     url_for('static', filename='w3.css')
     return render_template('CrearReceta.html')
+app.run()
