@@ -19,7 +19,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   height: inherit;
 }
 
-
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
@@ -50,10 +49,6 @@ input[type=submit]:hover {
   padding: 20px;
 }
 
-
-
-
-
 </style>
 </head><body>
 
@@ -74,86 +69,88 @@ input[type=submit]:hover {
   </div>
 </div>
 
-
-<div class="container ">
-        <br>
-        <br>      
-      <label for="fname">Autor</label>
-      <input type="text" id="autor" placeholder="Escribe el nombre del autor de la receta..">
-  
-      <label for="lname">Título</label>
-      <input type="text" id="titulo"  placeholder="Título de la receta">
-  
-  
-      <label for="subject">Resumen</label>
-      <textarea id="subject" id="resumen"maxlength="150" placeholder="Maximo 150 caracteres" style="height:100px"></textarea>
-
-      <label for="subject">Ingredientes</label>
-      <textarea id="subject" id="ingredientes" placeholder="Ingredientes" style="height:100px"></textarea>  
-
-      <label for="subject">Procedimiento</label>
-      <textarea id="subject" id="procedimiento" placeholder="Procedimiento" style="height:100px"></textarea>     
-
-      <label for="lname">Tiempo en minutos</label>
-      <br>
-      <input type="number" id="tiempo"  placeholder="">
-      <br>
-      <br>
-      <label for="lname">Imagen</label>
-      <br>
-      
-      <input type="text" id="imagen" placeholder="URL de la imagen">
-      <br>
-      <br>
-      <br>
-      <input type="submit" value="Carcar Receta">
-  
+<footer class="w3-light-white  w3-padding-64 w3-center" id="about">
+  <div  class="w3-text-teal"> 
+    <h2>Crear receta</h2>
   </div>
 
 
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main" style="margin-left:450px">
-
-
-
-
-
-
-
-
-
-  </div>
-
-
-<!-- END MAIN -->
-</div>
+  <div class="w3-container">  
+    <div class="w3-section">
+      <label><b>Autor</b></label>
+      <input class="w3-input w3-border" type="text" placeholder="Nombre del autor de la receta"required="" id="autor">
+    </div>
+    <div class="w3-section">
+      <label><b>Título</b></label>
+      <input class="w3-input w3-border" type="text" placeholder="Titulo de la receta"required="" id="titulo">
+    </div>
+    <div class="w3-section">
+      <label><b>Resumen</b></label>
+      <textarea class="w3-input w3-border" maxlength="150" placeholder="Resumen maximo 150 caracteres "type="text" required="" id="resumen"></textarea>
+    </div>
+    <div class="w3-section">
+      <label><b>Ingredientes</b></label>
+      <textarea class="w3-input w3-border" type="text" placeholder="Ingredientes" required="" id="ingredientes"></textarea>
+    </div>
+    <div class="w3-section">
+      <label><b>Procedimiento</b></label>
+      <textarea class="w3-input w3-border" placeholder="Procedimiento" type = "text" id="procedimiento"></textarea>
+    </div>
+    <div class="w3-section">
+      <label><b>Tiempo en minutos</b></label>
+      <input class="w3-input w3-border" placeholder="Tiempo en minutos"type = "number" id="tiempo">
+    </div>
+    <div class="w3-section">
+      <label><b>Imagen</b></label>
+      <input class="w3-input w3-border" placeholder="URL de la imagen" type = "text" id="imagen">
+    </div>
+    <p>                                 
+      <button  class="w3-button w3-block w3-dark-grey" onclick="subirReceta()" id="crear" type="submit">Crear Receta </button>
+    </div>
+</footer>
 
 <script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
+  function subirReceta(){
+    let autor= document.getElementById('autor').value;
+    let titulo= document.getElementById('titulo').value;
+    let resumen= document.getElementById('resumen').value;
+    let ingredientes= document.getElementById('ingredientes').value;
+    let procedimiento= document.getElementById('procedimiento').value;
+    let tiempo= document.getElementById('tiempo').value;
+    let imagen= document.getElementById('imagen').value;
+    if(autor==="" | titulo==="" | resumen==="" | ingredientes==="" | procedimiento==="" | tiempo==="" | imagen===""){
+      alert("Todos los campos requeridos")
+    }
+    else
+    {
 
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
+      let datos={
+        autor: autor,
+        titulo: titulo,
+        resumen: resumen,
+        ingredientes: ingredientes,
+        procedimiento: procedimiento,
+        tiempo: tiempo,
+        imagen: imagen
+      }
+      let opciones={
+        method: 'POST',
+        data:datos, 
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      }
+      fetch('/postReceta', opciones).then((res) =>
+      {
+        res.json().then((data) =>
+        {
+          location.reload();
+        });
+      });
+    }
   }
-}
 
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
 </script>
 
 

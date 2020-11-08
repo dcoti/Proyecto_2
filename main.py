@@ -53,7 +53,7 @@ receta6=Receta("Administrador","Chuchitos","Es un plato nacional, tradicional y 
 +"8. Sazonar con la sal y pimienta\n9. Cuando ya esté frío, agregar la carne.\n10. Colocar en las hojas de mazorca un poco de masa.\n11. En el centro agregar una cucharada de recado y trozos de la carne.\n12. Envolver las hojas y atar en un extremo una tira de hoja o hilo de cocinar.\n13. Cocinar al vapor los chuchitos por aproximadamente una hora y media a fuego lento.",
 "90","https://parrillas.top/wp-content/uploads/2020/07/chuchitos-guatemaltecos.jpg",5)
 
-rec=[receta1,receta2,receta3,receta4,receta5,receta6]
+rec=[receta1,receta2,receta3]
 recetas = [receta1,receta2,receta3,receta4,receta5,receta6]
 val=None
 contador=5
@@ -222,4 +222,13 @@ def CrearReceta():
     url_for('static', filename='w3-theme-black.css')
     url_for('static', filename='w3.css')
     return render_template('CrearReceta.html')
-app.run()
+
+@app.route('/masrecetas')
+def masrecetas():   
+    url_for('static', filename='css.css')
+    url_for('static', filename='font-awesome.css')
+    url_for('static', filename='w3-theme-black.css')
+    url_for('static', filename='w3.css')
+    return render_template('masrecetas.html',val=val,recetas=recetas)
+
+app.run(debug=True)

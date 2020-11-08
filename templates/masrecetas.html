@@ -11,7 +11,7 @@
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 .w3-sidebar {
   z-index: 3;
-  width: 250px;
+  width:250px;
   top: 43px;
   bottom: 0;
   height: inherit;
@@ -25,29 +25,20 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
   <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
     <a href="/inicio " class="w3-bar-item w3-button w3-theme-l1">Home</a>  
-    {% if usuario ==None %}
-    <a href="/contacto" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Acerca de</a>
-    <a href="/login" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Login</a>
-    {% endif %}
     {% if usuario !=None %}
     <a href="/CrearReceta" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Publicar receta</a>
     <a href="/perfil" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Perfil</a>
     <a href="/logout" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Logout</a>
-    {% endif %}
-   
+    {% endif %}  
   </div>
 </div>
 
 <!-- Sidebar -->
 <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar" >
-  <h4 class="w3-bar-item"><b>Algunas recetas</b></h4>
-  {%for receta in rec%}
+  <h4 class="w3-bar-item"><b>Recetas</b></h4>
+  {%for receta in recetas%}
   <input class="w3-bar-item w3-button w3-hover-black" onclick="location.href='receta/{{receta.indice}}'" value="{{receta.titulo}}"> 
   {% endfor %}
-
-  {% if usuario !=None %}
-  <input class="w3-bar-item w3-button w3-hover-black" onclick="location.href='masrecetas'" name = "inicio" value="Más recetas">
-  {% endif %}
 </form>
 </nav>
 
@@ -55,38 +46,24 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-
-<div class="w3-main" style="margin-left:450px">
-  <div class="w3-row w3-padding-64">
+<div class="w3-center w3-main" style="margin-left:450px">
+  <div class="w3-center w3-row w3-padding-64">
     <div class="w3-twothird w3-container">
-        <br>
-      <h1 class="w3-text-teal">BIENVENIDO</h1> 
-      <p>LA COCINA ES EL CORAZÓN DE LA CASA</p>  
+        <img src="./static/cuk.png" alt="Ponche de Frutas" style="width:35%">  
+      <h2 class="w3-center w3-text-teal">LA COCINA ES EL CORAZÓN DE LA CASA</h2>
     </div>  
 </div>
 
   <!-- First Photo Grid-->
-  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
-    <div class="w3-quarter">
-      <img src="./static/fiam.jpg" alt="Fiambre" style="width:100%">
-      <h3>Fiambre</h3>
-      <p> Plato tradicional de Guatemala que se come el 1 de noviembre, día en que, como en muchos países católicos, se celebra el Día de Todos los Santos.</p>
-    </div>
-    
-    <div class="w3-quarter">
-      <img src="./static/pnche.jpg" alt="Ponche de Frutas" style="width:100%">
-      <h3>Ponche de Frutas</h3>
-      <p>El ponche de frutas navideño es una infusión que se consume en Guatemala tradicionalmente durante las posadas y en la Nochebuena. </p>
- 
-    </div>
-    <div class="w3-quarter">
-      <img src="./static/tamal.jpg" alt="Tamalitos de elote" style="width:100%">
-      <h3>Tamalitos de elote</h3>
-      <p>Tipo de tamal de temporada de Guatemala que se hace con maíz fresco tienen la característica de ser dulces son fáciles de preparar y quedan deliciosos.</p>   
+  {%for receta in recetas%} 
+  <div class="w3-row w3-padding-16 w3-center" style="margin-left:350px" id="food">  
+    <div class=" w3-center w3-quarter">
+      <img src="{{receta.imagen}}" alt="Photo" style="width:100%">
+      <h3><a href="/receta/{{receta.indice}}">{{receta.titulo}}</a></h3><br>
+      <p>{{receta.resumen}}</p>
     </div>
   </div>
-
-  
+  {% endfor %}
 
 <!-- END MAIN -->
 </div>
