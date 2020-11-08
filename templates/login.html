@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://www.w3schools.com/w3css/tryw3css_templates_webpage.htm -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Cuck.login</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="static/W3.css">
+  <link rel="stylesheet" href="static/w3-theme-black.css">
+  <link rel="stylesheet" href="static/css.css">
+  <link rel="stylesheet" href="static/font-awesome.min.css">
+  <style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Roboto", sans-serif;
+    }
+    .w3-sidebar {
+      z-index: 3;
+      width: 250px;
+      top: 43px;
+      bottom: 0;
+      height: inherit;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1"
+        href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+        <a href="/inicio" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+      <a href="/contacto" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Acerca de</a>
+      <a href="/login" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Login</a>
+    </div>
+  </div>
+
+
+
+  <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+  <div class="w3-main" style="margin-left:430px">
+
+    <div class="w3-row w3-padding-64 w3-center">
+      <div class="w3-twothird w3-container">
+        <h1 class="w3-text-teal">Inicio de sesión</h1>
+        <p class="w3-large w3-text-black">Estamos contentos al verte de nuevo</p>
+
+
+  <!-- Footer / About Section -->
+  <footer class="w3-light-white w3-padding-64 w3-center" id="about">
+    <h2>Login</h2>
+    <form class="w3-container" method="POST">  
+      
+      <p class="w3-large w3-text-teal">¡Bienvenido!</p>
+      <div class="w3-section">
+    
+        <label><b>Usuario</b></label>
+        <input class="w3-input w3-border" type="text" required="" name ="usuario">
+      </div>
+      <div class="w3-section">
+        <label><b>Contraseña</b></label>
+        <input class="w3-input w3-border" type="password" required="" name ="contrasena">
+      </div>    
+      <p>                                 
+        <input  class="w3-button w3-block w3-dark-grey" id="hola" type="submit" value="Iniciar Sesión"></p>
+        <a href="/recuperar">¿Olvido su contraseña?</a><br>
+                <a href="/registro">Crear una cuenta</a>
+    </form>
+  </footer>
+            {% if error !=None %}
+            <div class="w3-panel w3-teal w3-center">
+              <h3>Lo sentimos</h3>
+              <p>Datos incorrectos</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="w3-row w3-padding-84">
+        <div class="w3-twothird w3-container">
+          <h1 class="w3-text-teal"></h1>
+          <p></p>
+        </div>
+      </div>
+
+
+      <!-- END MAIN -->
+    </div>
+
+    <script>
+      // Get the Sidebar
+      var mySidebar = document.getElementById("mySidebar");
+
+      // Get the DIV with overlay effect
+      var overlayBg = document.getElementById("myOverlay");
+
+      // Toggle between showing and hiding the sidebar, and add overlay effect
+      function w3_open() {
+        if (mySidebar.style.display === 'block') {
+          mySidebar.style.display = 'none';
+          overlayBg.style.display = "none";
+        } else {
+          mySidebar.style.display = 'block';
+          overlayBg.style.display = "block";
+        }
+      }
+
+      // Close the sidebar with the close button
+      function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+      }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://www.w3schools.com/w3css/tryw3css_templates_webpage.htm -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Cuk </title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="static/W3.css">
+<link rel="stylesheet" href="static/w3-theme-black.css">
+<link rel="stylesheet" href="static/css.css">
+<link rel="stylesheet" href="static/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+</style>
+</head><body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="/inicio " class="w3-bar-item w3-button w3-theme-l1">Home</a> 
+    <a href="/contacto" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Acerca de</a>
+    <a href="/login " class="w3-bar-item w3-button w3-theme-l1">Login</a> 
+    
+   
+  </div>
+</div>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+      <!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+    <img class="w3-image" src="./static/contactenos.jpg" alt="Hamburger Catering" width="1600" height="800">
+    <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+    </div>
+  </header>
+  
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="./static/comida1.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center">CUK</h1><br>
+      <h5 class="w3-center">Las mejores recetas desde el 2020</h5>
+      <p class="w3-large">La organización CUK nace de la necesidad de poder compartir recetas de cocina entre distintos cocineros, los cuales van desde profesionales en el ámbito, hasta principiantes y aficionados que gustan de un buen platillo.<span class="w3-tag w3-light-grey"></span> </p>
+      <p class="w3-large w3-text-grey w3-hide-medium">El descubrimiento de un nuevo plato es de más provecho para la humanidad que el descubrimiento de una estrella. (Jean Anthelme Brillat-Savarin)</p>
+    </div>
+  </div>
+  
+  <hr>
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-64" id="contact">
+    <h1>Contactenos</h1><br>
+    <p>Que tu medicina sea tu alimento, y el alimento tu medicina. (Hipócrates)</p>
+    <p class="w3-text-blue-grey w3-large"><b>Universidad de San Carlos de Guatemala</b></p>
+    <p>danielcoti7@gmail.com</p>
+  
+  </div>
+
+<!-- END MAIN -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+
+</body></html>

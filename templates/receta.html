@@ -1,0 +1,155 @@
+  <!DOCTYPE html>
+  <html>
+  <title>Receta</title>
+  <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Cuk </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+  <style>
+    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+    .w3-sidebar {
+      z-index: 3;
+      width: 250px;
+      top: 43px;
+      bottom: 0;
+      height: inherit;
+    }
+    .barcode{
+      white-space: pre;
+    }
+
+    </style>
+<body>
+
+  <!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="/inicio " class="w3-bar-item w3-button w3-theme-l1">Home</a>  
+    </div>
+    {% if val ==None %}
+    <div class="w3-col s3">
+      <a href="/contacto" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Acerca de</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="/login" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Login</a>
+    </div>
+    {% endif %}
+    {% if val !=None %}
+    <div class="w3-col s3">
+      <a href="/CrearReceta" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Publicar receta</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="/perfil" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Perfil</a>
+    </div>
+    <div class="w3-col s3">
+      <a href="/logout" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Logout</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+
+
+      <!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1400px;min-width:500px" id="home">
+    <img class="w3-image" src="{{receta.imagen}}" alt="Imagen" width="1400" height="700">
+    <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+    </div>
+  </header>
+
+
+
+  <!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h2 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">{{receta.titulo}}</span></h2>
+    <p>{{receta.resumen}}</p>  
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><i>Receta publicada por: {{receta.autor}}</p>
+    </div>
+  </div>
+</div>
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Ingredientes</span></h5>
+    <p class="barcode w3-leftbar w3-large ">{% autoescape false %} {{receta.ingredientes}}
+    {% endautoescape %}</p>
+  </div>
+</div>
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Procedimiento</span></h5>
+    <p class="barcode w3-leftbar w3-large ">{% autoescape false %}{{receta.procedimiento}}
+    {% endautoescape %}</p>
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><i>tiempo de preparacion: {{receta.tiempo}} minutos</p>
+    </div>  
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  </div>
+</div>
+
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin-left:450px">
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+<!-- END MAIN -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+
+</body></html>

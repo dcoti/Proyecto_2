@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://www.w3schools.com/w3css/tryw3css_templates_webpage.htm -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Cuk </title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="static/W3.css">
+<link rel="stylesheet" href="static/w3-theme-black.css">
+<link rel="stylesheet" href="static/css.css">
+<link rel="stylesheet" href="static/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+.caja {
+  position: absolute;
+  width: 250px;
+  top: 45px;
+  bottom: 0;
+  right:250px ;
+  left:1300px;
+}
+</style>
+</head><body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="/inicio " class="w3-bar-item w3-button w3-theme-l1">Home</a>  
+    {% if usuario ==None %}
+    <a href="/contacto" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Acerca de</a>
+    <a href="/login" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Login</a>
+    {% endif %}
+    {% if usuario !=None %}
+    <a href="/CrearReceta" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Publicar receta</a>
+    <a href="/perfil" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Perfil</a>
+    <a href="/logout" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Logout</a>
+    {% endif %}
+   
+  </div>
+</div>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar" >
+  <h4 class="w3-bar-item"><b>Algunas recetas</b></h4>
+  {%for receta in rec%}
+  <input class="w3-bar-item w3-button w3-hover-black" onclick="location.href='receta/{{receta.indice}}'" value="{{receta.titulo}}"> 
+  {% endfor %}
+
+  {% if usuario !=None %}
+  <input class="w3-bar-item w3-button w3-hover-black" onclick="location.href='mas_recetas'" name = "inicio" value="Más recetas">
+  {% endif %}
+</form>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin-left:450px">
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text-teal">BIENVENIDO</h1>
+      <p>LA COCINA ES EL CORAZÓN DE LA CASA</p>  
+    </div>  
+</div>
+
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+    <div class="w3-quarter">
+      <img src="./static/fiam.jpg" alt="Fiambre" style="width:100%">
+      <h3>Fiambre</h3>
+      <p> Plato tradicional de Guatemala que se come el 1 de noviembre, día en que, como en muchos países católicos, se celebra el Día de Todos los Santos.</p>
+      {% if usuario !=None %}
+      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
+      <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
+      {% endif %}
+    </div>
+    
+    <div class="w3-quarter">
+      <img src="./static/pnche.jpg" alt="Ponche de Frutas" style="width:100%">
+      <h3>Ponche de Frutas</h3>
+      <p>El ponche de frutas navideño es una infusión que se consume en Guatemala tradicionalmente durante las posadas y en la Nochebuena. </p>
+      {% if usuario !=None %}
+      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
+      <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
+      {% endif %}
+    </div>
+    <div class="w3-quarter">
+      <img src="./static/tamal.jpg" alt="Tamalitos de elote" style="width:100%">
+      <h3>Tamalitos de elote</h3>
+      <p>Tipo de tamal de temporada de Guatemala que se hace con maíz fresco tienen la característica de ser dulces son fáciles de preparar y quedan deliciosos.</p>   
+      {% if usuario !=None %}
+      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
+      <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
+      {% endif %}
+    </div>
+
+  <!-- Second Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center">
+    <div class="w3-quarter">
+      <img src="./static/ceviche.jpg" alt="Ceviche de camarón" style="width:100%">
+      <h3>Ceviche de camarón</h3>
+      <p>El ceviche de camarón en Guatemala es un plato que ha ganado gran popularidad por su delicioso sabor que combina en la época de calor.</p>
+      {% if usuario !=None %}
+      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
+      <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
+      {% endif %}
+    </div>
+    <div class="w3-quarter">
+      <img src="./static/rellenitos.jpg"alt="Rellenitos" style="width:100%">
+      <h3>Rellenitos</h3>
+      <p>Es un plato de puré de plátanos dulces rellenos con una mezcla de frijoles refritos, chocolate y canela. </p>
+      {% if usuario !=None %}
+      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
+      <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
+      {% endif %}
+    </div>
+    <div class="w3-quarter">
+      <img src="./static/chuchito.jpg" alt="Chuchitos" style="width:100%">
+      <h3>Chuchitos</h3>
+      <p>Es un plato nacional, tradicional y emblemático de la gastronomía Guatemalteca, elaborado a base de masa de maíz, y generalmente va mezclado de un recado o salsa de tomate y con un relleno que puede ser de carne de pollo o de cerdo. </p>
+      {% if usuario !=None %}
+      <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button> 
+      <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button> 
+      {% endif %}
+    </div>
+   
+  </div>
+
+<!-- END MAIN -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+
+</body></html>
