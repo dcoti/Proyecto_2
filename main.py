@@ -94,7 +94,7 @@ def buscar_receta(num):
         
 @app.route('/')
 def init():
-    return redirect('/inicio')
+    return redirect('inicio')
 
 
 @app.route('/inicio')
