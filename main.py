@@ -123,10 +123,6 @@ def login():
             return render_template('login.html', error=error)
     if 'usuario_logeado' in session:
         return redirect('inicio')
-    url_for('static', filename='css.css')
-    url_for('static', filename='font-awesome.css')
-    url_for('static', filename='w3-theme-black.css')
-    url_for('static', filename='w3.css')
     return render_template('login.html', error=error)
 
 @app.route('/logout', methods=['GET'])
@@ -154,19 +150,11 @@ def agregarReceta():
 
 @app.route('/perfil')
 def perfil():
-    url_for('static', filename='css.css')
-    url_for('static', filename='font-awesome.css')
-    url_for('static', filename='w3-theme-black.css')
-    url_for('static', filename='w3.css')
     return render_template('perfil.html',user=user)
 
 @app.route('/receta/<ide>')
 def receta(ide):
     receta=buscar_receta(ide)     
-    url_for('static', filename='css.css')
-    url_for('static', filename='font-awesome.css')
-    url_for('static', filename='w3-theme-black.css')
-    url_for('static', filename='w3.css')
     return render_template('receta.html',val=val,receta=receta)
 
 @app.route('/registro', methods=['POST', 'GET'])
@@ -186,10 +174,6 @@ def registro():
             creacion_usuario(request.form['nombre'],request.form['apellido'],request.form['usuario'],request.form['contrasena'])
             error='Usuario creado con exito'
             return render_template('registro.html', error=error)
-    url_for('static', filename='css.css')
-    url_for('static', filename='font-awesome.css')
-    url_for('static', filename='w3-theme-black.css')
-    url_for('static', filename='w3.css')
     return render_template('registro.html', error=error)
 
 @app.route('/recuperar', methods=['POST', 'GET'])
@@ -203,27 +187,16 @@ def recuperar():
             return render_template('recuperar.html', error=error)
         else:
             return render_template('recuperar.html', error=error)
-    url_for('static', filename='css.css')
-    url_for('static', filename='font-awesome.css')
-    url_for('static', filename='w3-theme-black.css')
-    url_for('static', filename='w3.css')
     return render_template('recuperar.html', error=error)
 
 @app.route('/CrearReceta')
 def CrearReceta():
-    url_for('static', filename='css.css')
-    url_for('static', filename='font-awesome.css')
-    url_for('static', filename='w3-theme-black.css')
-    url_for('static', filename='w3.css')
     return render_template('CrearReceta.html')
 
 @app.route('/masrecetas')
-def masrecetas():   
-    url_for('static', filename='css.css')
-    url_for('static', filename='font-awesome.css')
-    url_for('static', filename='w3-theme-black.css')
-    url_for('static', filename='w3.css')
+def masrecetas(): 
     return render_template('masrecetas.html',val=val,recetas=recetas)
 
-if __name__ == '__main__':
-    app.run(threaded=True,port=5000)
+#if __name__ == '__main__':
+ #   app.run(threaded=True,port=5000)
+app.run(debug=True)
