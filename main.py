@@ -231,4 +231,5 @@ def masrecetas():
     url_for('static', filename='w3.css')
     return render_template('masrecetas.html',val=val,recetas=recetas)
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(port=5000)
