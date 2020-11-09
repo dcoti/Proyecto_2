@@ -197,6 +197,6 @@ def CrearReceta():
 def masrecetas(): 
     return render_template('masrecetas.html',val=val,recetas=recetas)
 
-#if __name__ == '__main__':
- #   app.run(threaded=True,port=5000)
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(threaded=True,port=5000)
+#app.run(debug=True)
