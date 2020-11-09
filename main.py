@@ -101,6 +101,10 @@ def home():
         return render_template('inicio.html', usuario=session['usuario_logeado'], rec=rec)
     return render_template('inicio.html', usuario=None, rec=rec)
 
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     error = None
@@ -146,13 +150,7 @@ def agregarReceta():
     recetas.append(receta)
     return {"msg": 'Receta agregada'}
 
-@app.route('/contacto')
-def contacto():
-    url_for('static', filename='css.css')
-    url_for('static', filename='font-awesome.css')
-    url_for('static', filename='w3-theme-black.css')
-    url_for('static', filename='w3.css')
-    return render_template('contacto.html')
+
 
 @app.route('/perfil')
 def perfil():
