@@ -97,10 +97,6 @@ def buscar_receta(num):
 def home():
     global validacion
     validacion=0
-    url_for('static', filename='css.css')
-    url_for('static', filename='font-awesome.css')
-    url_for('static', filename='w3-theme-black.css')
-    url_for('static', filename='w3.css')
     if 'usuario_logeado' in session:
         return render_template('inicio.html', usuario=session['usuario_logeado'], rec=rec)
     return render_template('inicio.html', usuario=None, rec=rec)
