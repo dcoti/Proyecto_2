@@ -92,6 +92,10 @@ def buscar_receta(num):
         if int(num)== int(x.indice):
             return x
         
+@app.route('/')
+def init():
+    return redirect('/inicio')
+
 
 @app.route('/inicio')
 def home():
@@ -145,8 +149,6 @@ def agregarReceta():
     receta = Receta(datos['autor'], datos['titulo'], datos['resumen'], datos['ingredientes'], datos['procedimiento'], datos['tiempo'], datos['imagen'], contador)
     recetas.append(receta)
     return {"msg": 'Receta agregada'}
-
-
 
 @app.route('/perfil')
 def perfil():
