@@ -2,7 +2,6 @@ from flask import Flask, render_template, url_for, request, make_response, sessi
 from Datos.usuario import Usuario
 from Datos.receta import Receta
 from os import environ
-import pdfkit
 import json
 import base64
 import csv
@@ -160,7 +159,7 @@ def perfil():
 @app.route('/receta/<ide>')
 def receta(ide):
     receta=buscar_receta(ide)     
-    return render_template('receta.html',val=val,receta=receta)
+    return render_template('receta.html',val=val,receta=receta,user=user)
 
 @app.route('/registro', methods=['POST', 'GET'])
 def registro():
@@ -208,7 +207,6 @@ def agregarRecetas():
     print(datos)
     if datos['data'] == '':
         return {"msg": 'Error en contenido'}
-
     contenido = base64.b64decode(datos['data']).decode('utf-8')
     filas = contenido.splitlines()
     reader = csv.reader(filas, delimiter=',')
@@ -219,6 +217,8 @@ def agregarRecetas():
         recetas.append(receta)
     return {"msg": 'Receta agregada'}
 
-if __name__ == '__main__':
-    app.run(threaded=True,port=5000)
-#app.run(debug=True)
+
+
+#if __name__ == '__main__':
+#    app.run(threaded=True,port=5000)
+app.run(debug=True)
