@@ -106,6 +106,9 @@ input[type=submit]:hover {
     </div>
     <p>                                 
       <button  class="w3-button w3-block w3-dark-grey" onclick="subirReceta()" id="crear" type="submit">Crear Receta </button>
+      <p>  
+        <input type= "file" id="fileChooser" style="display: none;"/>
+      <button  class="w3-button w3-block w3-section w3-dark-grey w3-ripple w3-padding" onclick="cargarArchivo(fileChooser)">Cargar archivo de recetas </button>
     </div>
 </footer>
 
@@ -150,6 +153,47 @@ input[type=submit]:hover {
       });
     }
   }
+  var fileChooser = document.getElementById('fileChooser');
+  if (fileChooser)
+    fileChooser.addEventListener("change", subirArchivo)
+    
+  function subirArchivo()
+  {
+    let reader = new FileReader();
+
+    reader.onload = function ()
+    {
+      let datos = {
+        data: reader.result.replace('data:', '')
+          .replace(/^.+,/, '')
+      }
+      fetch('/cargarArchivo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+      }).then(res =>
+      {
+        location.reload();
+      });
+    }
+
+    reader.onerror = function (error)
+    {
+      console.log('Error: ', error);
+    };
+
+    reader.readAsDataURL(fileChooser.files[0]);
+  }
+
+  function cargarArchivo(input)
+  {
+    input.click();
+  }
+
+
+
 
 </script>
 

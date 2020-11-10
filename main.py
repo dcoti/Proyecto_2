@@ -1,8 +1,11 @@
 from flask import Flask, render_template, url_for, request, make_response, session, redirect, jsonify
 from Datos.usuario import Usuario
 from Datos.receta import Receta
+from os import environ
+import pdfkit
 import json
-
+import base64
+import csv
 
 app = Flask(__name__)
 usuario1 = Usuario("Usuario","Maestro","admin","admin")
@@ -199,6 +202,23 @@ def CrearReceta():
 def masrecetas(): 
     return render_template('masrecetas.html',val=val,recetas=recetas)
 
-if __name__ == '__main__':
-    app.run(threaded=True,port=5000)
-#app.run(debug=True)
+@app.route('/cargarArchivo', methods=['POST'])
+def agregarRecetas():
+    datos = request.get_json()
+    print(datos)
+    if datos['data'] == '':
+        return {"msg": 'Error en contenido'}
+
+    contenido = base64.b64decode(datos['data']).decode('utf-8')
+    filas = contenido.splitlines()
+    reader = csv.reader(filas, delimiter=',')
+    for row in reader:
+        global contador
+        contador=contador+1
+        receta = Receta(row[0], row[1], row[2],row[3],row[4],row[5],row[6],contador)
+        recetas.append(receta)
+    return {"msg": 'Receta agregada'}
+
+#if __name__ == '__main__':
+ #   app.run(threaded=True,port=5000)
+app.run(debug=True)
